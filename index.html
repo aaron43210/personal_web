@@ -1,1068 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aaron R | Co-Founder @ ZapServe</title>
-    <meta name="description" content="Portfolio of Aaron R - Co-Founder at ZapServe Interconnecting Pvt Ltd, MSc Data Science & Geoinformatics student." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
-      :root {
-        --bg: #060b18;
-        --bg-alt: #0c1324;
-        --card: #111b2e;
-        --card-border: #1a2744;
-        --card-hover: #162036;
-        --text: #e2e8f0;
-        --text-secondary: #94a3b8;
-        --text-muted: #64748b;
-        --accent: #38bdf8;
-        --accent-hover: #0ea5e9;
-        --accent-glow: rgba(56, 189, 248, 0.12);
-        --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        --nav-h: 72px;
-        --max-w: 1100px;
-        --radius: 12px;
-        --radius-sm: 8px;
-      }
-
-      *, *::before, *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: var(--nav-h);
-      }
-
-      body {
-        font-family: var(--font);
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      a {
-        color: var(--accent);
-        text-decoration: none;
-        transition: color 0.25s;
-      }
-
-      a:hover { color: var(--accent-hover); }
-
-      img { display: block; max-width: 100%; }
-
-      .container {
-        max-width: var(--max-w);
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      /* ---- HEADER / NAV ---- */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: var(--nav-h);
-        background: rgba(6, 11, 24, 0.85);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--card-border);
-        z-index: 100;
-        display: flex;
-        align-items: center;
-      }
-
-      .nav-inner {
-        max-width: var(--max-w);
-        margin: 0 auto;
-        padding: 0 24px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .nav-brand {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text);
-        letter-spacing: -0.02em;
-      }
-
-      .nav-brand span { color: var(--accent); }
-
-      #nav-toggle { display: none; }
-
-      .nav-toggle-btn {
-        display: none;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        padding: 4px;
-      }
-
-      .nav-toggle-btn span {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: var(--text-secondary);
-        border-radius: 2px;
-        transition: transform 0.3s, opacity 0.3s;
-      }
-
-      #nav-toggle:checked ~ .nav-toggle-btn span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-      }
-
-      #nav-toggle:checked ~ .nav-toggle-btn span:nth-child(2) {
-        opacity: 0;
-      }
-
-      #nav-toggle:checked ~ .nav-toggle-btn span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-      }
-
-      nav {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      nav a {
-        color: var(--text-secondary);
-        font-size: 0.875rem;
-        font-weight: 500;
-        padding: 6px 12px;
-        border-radius: var(--radius-sm);
-        transition: color 0.25s, background 0.25s;
-      }
-
-      nav a:hover {
-        color: var(--text);
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      /* ---- HERO ---- */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 120px 24px 80px;
-        background:
-          radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 60%),
-          radial-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-          linear-gradient(180deg, var(--bg-alt), var(--bg));
-        background-size: 100%, 32px 32px, 100%;
-      }
-
-      .hero-content {
-        animation: fadeSlideUp 0.8s ease both;
-      }
-
-      .hero-photo {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid var(--accent);
-        box-shadow: 0 0 0 6px var(--accent-glow), 0 0 48px rgba(56, 189, 248, 0.1);
-        margin: 0 auto 32px;
-      }
-
-      .hero h1 {
-        font-size: 3rem;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 1.15;
-        margin-bottom: 12px;
-      }
-
-      .hero-title {
-        font-size: 1.15rem;
-        color: var(--accent);
-        font-weight: 500;
-        margin-bottom: 16px;
-      }
-
-      .hero-tagline {
-        font-size: 1.05rem;
-        color: var(--text-secondary);
-        max-width: 560px;
-        margin: 0 auto 16px;
-        line-height: 1.7;
-      }
-
-      .hero-location {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        margin-bottom: 28px;
-      }
-
-      .hero-links {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 24px;
-        border-radius: 40px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
-      }
-
-      .btn-primary {
-        background: var(--accent);
-        color: #060b18;
-      }
-
-      .btn-primary:hover {
-        color: #060b18;
-        background: var(--accent-hover);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(56, 189, 248, 0.25);
-      }
-
-      .btn-outline {
-        border: 1px solid var(--card-border);
-        color: var(--text-secondary);
-        background: transparent;
-      }
-
-      .btn-outline:hover {
-        color: var(--text);
-        border-color: var(--accent);
-        background: var(--accent-glow);
-        transform: translateY(-2px);
-      }
-
-      .scroll-hint {
-        position: absolute;
-        bottom: 32px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--text-muted);
-        font-size: 0.8rem;
-        animation: bounce 2.5s ease infinite;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-
-      /* ---- SECTIONS ---- */
-      section {
-        padding: 96px 24px;
-      }
-
-      .section-alt { background: var(--bg-alt); }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 56px;
-      }
-
-      .section-header h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin-bottom: 12px;
-      }
-
-      .section-header p {
-        color: var(--text-secondary);
-        max-width: 520px;
-        margin: 0 auto;
-      }
-
-      .accent-bar {
-        width: 48px;
-        height: 3px;
-        background: var(--accent);
-        border-radius: 2px;
-        margin: 16px auto 0;
-      }
-
-      /* ---- ABOUT ---- */
-      .about-text {
-        max-width: 720px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .about-text p {
-        color: var(--text-secondary);
-        font-size: 1.05rem;
-        line-height: 1.8;
-        margin-bottom: 20px;
-      }
-
-      .about-text strong {
-        color: var(--accent);
-        font-weight: 600;
-      }
-
-      /* ---- TIMELINE ---- */
-      .timeline {
-        position: relative;
-        max-width: 680px;
-        margin: 0 auto;
-        padding-left: 40px;
-      }
-
-      .timeline::before {
-        content: '';
-        position: absolute;
-        left: 14px;
-        top: 8px;
-        bottom: 8px;
-        width: 2px;
-        background: var(--card-border);
-      }
-
-      .timeline-item {
-        position: relative;
-        margin-bottom: 36px;
-      }
-
-      .timeline-item:last-child { margin-bottom: 0; }
-
-      .timeline-dot {
-        position: absolute;
-        left: -33px;
-        top: 24px;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--accent);
-        border: 2px solid var(--bg);
-        box-shadow: 0 0 0 3px var(--accent-glow);
-      }
-
-      .section-alt .timeline-dot {
-        border-color: var(--bg-alt);
-      }
-
-      .timeline-card {
-        background: var(--card);
-        border: 1px solid var(--card-border);
-        border-radius: var(--radius);
-        padding: 24px;
-        transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      }
-
-      .timeline-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(56, 189, 248, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      }
-
-      .timeline-date {
-        display: inline-block;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--accent);
-        background: var(--accent-glow);
-        padding: 3px 10px;
-        border-radius: 20px;
-        margin-bottom: 10px;
-      }
-
-      .timeline-card h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 4px;
-        letter-spacing: -0.01em;
-      }
-
-      .timeline-card .org {
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-        margin-bottom: 10px;
-      }
-
-      .timeline-card p {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        line-height: 1.65;
-      }
-
-      /* ---- SKILLS ---- */
-      .skills-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        max-width: 720px;
-        margin: 0 auto;
-        justify-content: center;
-      }
-
-      .skill-tag {
-        background: var(--card);
-        border: 1px solid var(--card-border);
-        border-radius: 40px;
-        padding: 10px 22px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-secondary);
-        transition: transform 0.3s, border-color 0.3s, background 0.3s, color 0.3s;
-        cursor: default;
-      }
-
-      .skill-tag:hover {
-        transform: translateY(-2px);
-        border-color: var(--accent);
-        background: var(--accent-glow);
-        color: var(--text);
-      }
-
-      /* ---- PROJECTS ---- */
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .project-card {
-        background: var(--card);
-        border: 1px solid var(--card-border);
-        border-radius: var(--radius);
-        padding: 28px;
-        transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      }
-
-      .project-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(56, 189, 248, 0.3);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .project-label {
-        display: inline-block;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-bottom: 12px;
-      }
-
-      .project-card h3 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-        letter-spacing: -0.01em;
-      }
-
-      .project-card .project-desc {
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-        line-height: 1.7;
-        margin-bottom: 16px;
-      }
-
-      .project-features-title {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-bottom: 10px;
-      }
-
-      .project-features {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .project-features li {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        background: rgba(56, 189, 248, 0.06);
-        border: 1px solid rgba(56, 189, 248, 0.12);
-        border-radius: 20px;
-        padding: 4px 12px;
-      }
-
-      /* ---- CERTIFICATIONS ---- */
-      .certs-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .cert-card {
-        background: var(--card);
-        border: 1px solid var(--card-border);
-        border-top: 3px solid var(--accent);
-        border-radius: var(--radius);
-        padding: 24px 20px;
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-      .cert-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      }
-
-      .cert-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: var(--accent-glow);
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 14px;
-        font-size: 1.15rem;
-        font-weight: 700;
-      }
-
-      .cert-card h3 {
-        font-size: 0.9rem;
-        font-weight: 600;
-        line-height: 1.5;
-      }
-
-      .cert-card .cert-org {
-        color: var(--text-muted);
-        font-size: 0.8rem;
-        margin-top: 6px;
-      }
-
-      /* ---- ACHIEVEMENTS ---- */
-      .achievements-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .achievement-card {
-        background: var(--card);
-        border: 1px solid var(--card-border);
-        border-radius: var(--radius);
-        padding: 24px;
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-        transition: transform 0.3s, border-color 0.3s;
-      }
-
-      .achievement-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(56, 189, 248, 0.3);
-      }
-
-      .achievement-icon {
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        border-radius: var(--radius-sm);
-        background: var(--accent-glow);
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-      }
-
-      .achievement-card h3 {
-        font-size: 0.95rem;
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-
-      .achievement-card p {
-        color: var(--text-muted);
-        font-size: 0.85rem;
-        line-height: 1.6;
-      }
-
-      /* ---- CONTACT ---- */
-      .contact-card {
-        background: var(--card);
-        border: 1px solid var(--card-border);
-        border-radius: var(--radius);
-        max-width: 580px;
-        margin: 0 auto;
-        padding: 36px;
-      }
-
-      .contact-row {
-        display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        padding: 14px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      }
-
-      .contact-row:last-child { border-bottom: none; }
-
-      .contact-icon {
-        flex-shrink: 0;
-        width: 36px;
-        height: 36px;
-        border-radius: var(--radius-sm);
-        background: var(--accent-glow);
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.85rem;
-        font-weight: 700;
-      }
-
-      .contact-label {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-bottom: 2px;
-      }
-
-      .contact-value {
-        font-size: 0.95rem;
-        color: var(--text-secondary);
-        word-break: break-word;
-      }
-
-      .contact-value a { color: var(--accent); }
-
-      /* ---- FOOTER ---- */
-      footer {
-        text-align: center;
-        padding: 36px 24px;
-        border-top: 1px solid var(--card-border);
-        color: var(--text-muted);
-        font-size: 0.85rem;
-      }
-
-      /* ---- ANIMATIONS ---- */
-      @keyframes fadeSlideUp {
-        from {
-          opacity: 0;
-          transform: translateY(28px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fillBar {
-        to { width: var(--w); }
-      }
-
-      @keyframes bounce {
-        0%, 100% { transform: translateX(-50%) translateY(0); }
-        50% { transform: translateX(-50%) translateY(8px); }
-      }
-
-      /* ---- RESPONSIVE ---- */
-      @media (max-width: 900px) {
-        .certs-grid { grid-template-columns: repeat(2, 1fr); }
-      }
-
-      @media (max-width: 768px) {
-        .nav-toggle-btn { display: flex; }
-
-        nav {
-          display: none;
-          position: absolute;
-          top: var(--nav-h);
-          left: 0;
-          right: 0;
-          background: rgba(6, 11, 24, 0.97);
-          border-bottom: 1px solid var(--card-border);
-          flex-direction: column;
-          padding: 12px 24px 20px;
-          gap: 4px;
-        }
-
-        #nav-toggle:checked ~ nav { display: flex; }
-
-        nav a {
-          padding: 10px 12px;
-          font-size: 0.95rem;
-        }
-
-        .hero h1 { font-size: 2.2rem; }
-        .hero-photo { width: 140px; height: 140px; }
-        .skills-grid { grid-template-columns: 1fr; }
-        .projects-grid { grid-template-columns: 1fr; }
-        .achievements-grid { grid-template-columns: 1fr; }
-        section { padding: 72px 20px; }
-      }
-
-      @media (max-width: 520px) {
-        .certs-grid { grid-template-columns: 1fr; }
-        .hero h1 { font-size: 1.8rem; }
-        .hero-title { font-size: 1rem; }
-        .section-header h2 { font-size: 1.6rem; }
-        .contact-card { padding: 24px 20px; }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- HEADER -->
-    <header>
-      <div class="nav-inner">
-        <a href="#home" class="nav-brand">Aaron R<span>.</span></a>
-        <input type="checkbox" id="nav-toggle" />
-        <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle navigation">
-          <span></span><span></span><span></span>
-        </label>
-        <nav>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#experience">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#certifications">Certifications</a>
-          <a href="#achievements">Achievements</a>
-          <a href="#contact">Contact</a>
-        </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aaron R — Portfolio</title>
+  <meta name="description" content="Portfolio of Aaron R — Co-Founder at ZapServe, MSc Data Science & Geoinformatics student." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1a18; --soft: #4a4a42; --muted: #8a8a80;
+      --line: #e0dfd8; --bg: #f9f8f4; --card: #ffffff;
+      --accent: #1a4a8a; --accent2: #3a7abf;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(249,248,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-weight: 500; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--soft); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 80px 5vw 0; gap: 4rem; }
+    .hero-text { max-width: 520px; }
+    .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.75rem; }
+    .hero-eyebrow::before { content: ""; display: block; width: 32px; height: 1px; background: var(--accent); }
+    h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc { color: var(--soft); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2.5rem; max-width: 440px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--ink); color: var(--bg); padding: 0.85rem 2rem; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: background 0.25s, transform 0.2s; }
+    .hero-cta:hover { background: var(--accent); transform: translateY(-2px); }
+    .hero-visual { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+    .avatar-ring { width: 320px; height: 320px; border-radius: 50%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; position: relative; }
+    .avatar-ring::before { content: ""; position: absolute; inset: 12px; border-radius: 50%; border: 1px dashed var(--line); }
+    .avatar-inner { width: 240px; height: 240px; border-radius: 50%; background: linear-gradient(135deg, var(--accent2) 0%, var(--accent) 100%); display: flex; align-items: center; justify-content: center; font-family: "Cormorant Garamond", serif; font-size: 5rem; color: white; font-weight: 300; letter-spacing: -0.02em; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+    .avatar-inner img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .tag { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border: 1px solid var(--line); color: var(--soft); background: var(--card); border-radius: 2px; }
+
+    /* SECTIONS */
+    section { padding: 100px 5vw; }
+    section:nth-child(even) { background: var(--card); }
+    .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.6rem; }
+    .section-label::after { content: ""; flex: 1; height: 1px; background: var(--line); max-width: 60px; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { color: var(--soft); margin-bottom: 1.2rem; line-height: 1.85; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat-card { border: 1px solid var(--line); padding: 1.5rem; background: var(--bg); }
+    .stat-num { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
+    .tl-item { position: relative; margin-bottom: 3rem; }
+    .tl-item::before { content: ""; position: absolute; left: -2rem; top: 7px; width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--accent); background: var(--bg); transform: translateX(-4px); }
+    .tl-year { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.4rem; }
+    .tl-degree { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .tl-school { color: var(--soft); font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .tl-pct { display: inline-block; font-size: 0.78rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.15rem 0.6rem; border-radius: 2px; margin-top: 0.4rem; }
+    .tl-desc { color: var(--soft); font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.7; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .skill-group-title { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 500; margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 0.5rem; }
+    .skill-list { list-style: none; }
+    .skill-list li { padding: 0.4rem 0; color: var(--soft); font-size: 0.88rem; border-bottom: 1px solid rgba(0,0,0,0.04); display: flex; align-items: center; gap: 0.5rem; }
+    .skill-list li::before { content: "—"; color: var(--accent); font-size: 0.7rem; }
+
+    /* PROJECTS */
+    .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .research-card { border: 1px solid var(--line); padding: 2rem; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .research-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .research-card::before { content: attr(data-num); position: absolute; right: 1.5rem; top: 1rem; font-family: "Cormorant Garamond", serif; font-size: 4rem; font-weight: 300; color: var(--line); line-height: 1; }
+    .research-card h4 { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .research-card p { color: var(--soft); font-size: 0.88rem; line-height: 1.8; }
+    .research-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .research-tags span { font-size: 0.7rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.6rem; border: 1px solid var(--line); color: var(--muted); border-radius: 2px; }
+
+    /* CERTS */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+    .cert-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.5rem; border: 1px solid var(--line); background: var(--bg); transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .cert-item:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .cert-icon { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--accent2), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; color: white; }
+    .cert-name { font-size: 0.85rem; color: var(--ink); font-weight: 500; margin-bottom: 0.2rem; }
+    .cert-issuer { font-size: 0.75rem; color: var(--muted); }
+
+    /* ACHIEVEMENTS */
+    .workshops-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+    .workshop-item { padding: 1.2rem 1.5rem; border-left: 3px solid var(--accent); background: var(--bg); transition: background 0.2s; }
+    .workshop-item:hover { background: var(--card); }
+    .workshop-item p { font-size: 0.88rem; color: var(--soft); line-height: 1.6; }
+    .workshop-item strong { color: var(--ink); font-weight: 500; }
+
+    /* HOBBIES */
+    .hobbies-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .hobby-card { padding: 2.5rem 2rem; text-align: center; border: 1px solid var(--line); transition: all 0.25s; position: relative; overflow: hidden; }
+    .hobby-card::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent2), var(--accent)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .hobby-card:hover::after { transform: scaleX(1); }
+    .hobby-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+    .hobby-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .hobby-title { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .hobby-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* CONTACT */
+    #contact { background: var(--ink); color: var(--bg); }
+    #contact .section-label { color: var(--accent2); }
+    #contact .section-label::after { background: rgba(255,255,255,0.15); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-row { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .contact-icon { width: 42px; height: 42px; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; border-radius: 2px; }
+    .contact-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.15rem; }
+    .contact-value { font-size: 0.92rem; color: rgba(255,255,255,0.85); }
+    .contact-value a { color: var(--accent2); text-decoration: none; }
+    .contact-quote { font-family: "Cormorant Garamond", serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; font-style: italic; line-height: 1.5; color: rgba(255,255,255,0.7); padding-left: 2rem; border-left: 2px solid var(--accent2); }
+
+    /* FOOTER */
+    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 5vw; text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+    /* FADE */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; }
+      .hero-text { max-width: 100%; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-desc { margin: 0 auto 2.5rem; }
+      .hero-cta { margin: 0 auto; }
+      .about-grid, .contact-grid, .research-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hobbies-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .hobbies-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .avatar-ring { width: 220px; height: 220px; }
+      .avatar-inner { width: 160px; height: 160px; font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Aaron R</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text fade-up">
+    <p class="hero-eyebrow">Portfolio</p>
+    <h1>Aaron <em>R</em></h1>
+    <p class="hero-desc">Co-Founder &amp; Startup Builder · Data Scientist · Geoinformatics Specialist. Building technology that connects people with the services they need.</p>
+    <a href="#contact" class="hero-cta">Get in touch →</a>
+  </div>
+  <div class="hero-visual fade-up" style="transition-delay:0.2s">
+    <div class="avatar-ring">
+      <div class="avatar-inner">
+        <img src="IMG_8231 3.JPG" alt="Aaron R">
       </div>
-    </header>
+    </div>
+    <div class="hero-tags">
+      <span class="tag">Python</span><span class="tag">Data Science</span>
+      <span class="tag">GIS</span><span class="tag">Machine Learning</span>
+      <span class="tag">Startup</span><span class="tag">ZapServe</span>
+    </div>
+  </div>
+</section>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <img
-          src="/IMG_8231_3.jpeg"
-          alt="Aaron R - Portrait"
-          class="hero-photo"
-        />
-        <h1>Aaron R</h1>
-        <p class="hero-title">Co-Founder @ ZapServe &nbsp;|&nbsp; MSc Data Science &amp; Geoinformatics</p>
-        <p class="hero-tagline">
-          Building real-world technology solutions that connect people with the services they need, when they need them.
-        </p>
-        <p class="hero-location">Trivandrum, Kerala, India</p>
-        <div class="hero-links">
-          <a href="https://www.linkedin.com/in/aaronr35" class="btn btn-primary" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:aaronr43210@gmail.com" class="btn btn-outline">Email Me</a>
-        </div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — About</div>
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p>I'm a co-founder of <strong style="color:var(--ink)">ZapServe Interconnecting Pvt Ltd</strong>, an AI-powered hyperlocal service platform startup. We leverage intelligent matching, real-time location detection, and smart automation to connect users with trusted service providers near them.</p>
+      <p>My academic journey spans from Geology to Data Science &amp; Geoinformatics at the Digital University Kerala / IIITM-K, giving me a unique perspective on spatial data, analytics, and applied technology.</p>
+      <p>Beyond the startup, I'm passionate about machine learning, front-end development, satellite imagery analysis, and turning complex geospatial data into clear, actionable insights.</p>
+    </div>
+    <div class="about-stats fade-up" style="transition-delay:0.15s">
+      <div class="stat-card"><div class="stat-num">DPIIT</div><div class="stat-label">Recognized Startup</div></div>
+      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Certifications</div></div>
+      <div class="stat-card"><div class="stat-num">AI</div><div class="stat-label">-Powered Platform</div></div>
+      <div class="stat-card"><div class="stat-num">MVP</div><div class="stat-label">Platform Deployed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">02 — Education</div>
+  <div class="timeline fade-up">
+    <div class="tl-item">
+      <div class="tl-year">2025 – 2027</div>
+      <div class="tl-degree">MSc. Data Science &amp; Geoinformatics</div>
+      <div class="tl-school">Digital University Kerala / IIITM-K</div>
+      <p class="tl-desc">Specializing in applied data science, geospatial analytics, machine learning, and intelligent systems design.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2021 – 2024</div>
+      <div class="tl-degree">BSc. Geology</div>
+      <div class="tl-school">University of Kerala</div>
+      <p class="tl-desc">Core studies in earth sciences, spatial analysis, GIS mapping, and geological field research methodologies.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2019 – 2021</div>
+      <div class="tl-degree">Higher Secondary · Agriculture Science</div>
+      <div class="tl-school">Govt. VHSS Malayinkil</div>
+      <p class="tl-desc">Foundation in agricultural sciences, environmental studies, and biological systems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">03 — Experience</div>
+  <div class="timeline fade-up">
+    <div class="tl-item">
+      <div class="tl-year">2025 – Present · Full-time</div>
+      <div class="tl-degree">Co-Founder</div>
+      <div class="tl-school">ZapServe Interconnecting Pvt Ltd</div>
+      <p class="tl-desc">Leading product development, technology strategy, and platform architecture for an AI-powered hyperlocal service marketplace. Managing MVP development, startup operations, and team building.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2021 – 2024 · Academic</div>
+      <div class="tl-degree">Geology Specialist</div>
+      <div class="tl-school">University College Thiruvananthapuram</div>
+      <p class="tl-desc">Applied GIS and remote sensing techniques for geological surveys. Conducted fieldwork, spatial data analysis, and research presentations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">04 — Skills</div>
+  <div class="skills-grid">
+    <div class="skill-group fade-up">
+      <div class="skill-group-title"><span>💻</span> Programming</div>
+      <ul class="skill-list"><li>Python</li><li>JavaScript / HTML / CSS</li><li>SQL</li><li>R (basics)</li></ul>
+    </div>
+    <div class="skill-group fade-up" style="transition-delay:0.1s">
+      <div class="skill-group-title"><span>🛠️</span> Tools &amp; Platforms</div>
+      <ul class="skill-list"><li>QGIS</li><li>PyTorch</li><li>GitHub</li><li>VS Code</li><li>Docker / Kubernetes</li></ul>
+    </div>
+    <div class="skill-group fade-up" style="transition-delay:0.2s">
+      <div class="skill-group-title"><span>🌍</span> Geospatial</div>
+      <ul class="skill-list"><li>GIS &amp; Spatial Analysis</li><li>Remote Sensing</li><li>NetCDF / Raster Data</li><li>Satellite Imagery</li></ul>
+    </div>
+    <div class="skill-group fade-up" style="transition-delay:0.3s">
+      <div class="skill-group-title"><span>🤖</span> AI / Data Science</div>
+      <ul class="skill-list"><li>Machine Learning</li><li>Deep Learning</li><li>AI-Based Matching</li><li>Data Analysis</li><li>Feature Extraction</li></ul>
+    </div>
+    <div class="skill-group fade-up" style="transition-delay:0.35s">
+      <div class="skill-group-title"><span>🚀</span> Startup &amp; Product</div>
+      <ul class="skill-list"><li>Startup Development</li><li>Product Design</li><li>Real-Time Systems</li><li>Platform Architecture</li></ul>
+    </div>
+    <div class="skill-group fade-up" style="transition-delay:0.4s">
+      <div class="skill-group-title"><span>🌐</span> Languages</div>
+      <ul class="skill-list"><li>English</li><li>Malayalam</li><li>Hindi</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">05 — Projects</div>
+  <div class="research-grid">
+    <div class="research-card fade-up" data-num="01">
+      <h4>ZapServe — Hyperlocal Service Platform</h4>
+      <p>An intelligent platform connecting users with local service providers and daily wage workers in real time, using AI-driven matching and real-time location detection.</p>
+      <div class="research-tags">
+        <span>AI Matching</span><span>Real-Time</span><span>Startup</span><span>Mobile</span>
       </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <h2>About</h2>
-          <div class="accent-bar"></div>
-        </div>
-        <div class="about-text">
-          <p>
-            I am the co-founder of <strong>ZapServe Interconnecting Pvt Ltd</strong>, a startup focused on building an intelligent hyperlocal service platform. We leverage <strong>AI-driven matching</strong>, <strong>real-time location detection</strong>, and smart automation to connect users with trusted service providers near them.
-          </p>
-          <p>
-            My academic journey spans from <strong>Geology</strong> to <strong>Data Science &amp; Geoinformatics</strong>, giving me a unique perspective on spatial data, analytics, and applied technology. I believe in empowering users through thoughtful, accessible technology that solves everyday problems.
-          </p>
-          <p>
-            Beyond the startup, I am passionate about machine learning, front-end development, and turning complex data into clear, actionable insights.
-          </p>
-        </div>
+    </div>
+    <div class="research-card fade-up" style="transition-delay:0.1s" data-num="02">
+      <h4>Feature Extraction AI System</h4>
+      <p>An AI system processing satellite, GIS, and scientific datasets to automatically extract meaningful geospatial features for large-scale analysis and deep learning models.</p>
+      <div class="research-tags">
+        <span>PyTorch</span><span>GIS</span><span>Deep Learning</span><span>NetCDF</span>
       </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" class="section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>Education</h2>
-          <div class="accent-bar"></div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2025 - 2027</span>
-              <h3>MSc Data Science &amp; Geoinformatics</h3>
-              <p class="org">Digital University Kerala / IIITM-K</p>
-              <p>Specializing in applied data science, geospatial analytics, machine learning, and intelligent systems design.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2021 - 2024</span>
-              <h3>BSc Geology</h3>
-              <p class="org">University of Kerala</p>
-              <p>Core studies in earth sciences, spatial analysis, GIS mapping, and geological field research methodologies.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2019 - 2021</span>
-              <h3>Higher Secondary - Agriculture Science</h3>
-              <p class="org">Govt. VHSS Malayinkil</p>
-              <p>Foundation in agricultural sciences, environmental studies, and biological systems.</p>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="research-card fade-up" style="transition-delay:0.15s" data-num="03">
+      <h4>Geological Survey &amp; GIS Mapping</h4>
+      <p>Applied remote sensing and GIS techniques for geological field surveys — spatial data analysis, terrain modeling, and research presentations at the University of Kerala.</p>
+      <div class="research-tags">
+        <span>QGIS</span><span>Remote Sensing</span><span>Field Research</span>
       </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <div class="container">
-        <div class="section-header">
-          <h2>Experience</h2>
-          <div class="accent-bar"></div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2025 - Present</span>
-              <h3>Co-Founder</h3>
-              <p class="org">ZapServe Interconnecting Pvt Ltd</p>
-              <p>Leading product development, technology strategy, and platform architecture for an AI-powered hyperlocal service marketplace. Managing MVP development and startup operations.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2021 - 2024</span>
-              <h3>Geology Specialist</h3>
-              <p class="org">University College Thiruvananthapuram</p>
-              <p>Applied GIS and remote sensing techniques for geological surveys. Conducted fieldwork, spatial data analysis, and research presentations.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <span class="timeline-date">2019 - 2021</span>
-              <h3>Agriculture Specialist</h3>
-              <p class="org">Govt. VHSS Malayinkil</p>
-              <p>Studied advanced agricultural practices, plant sciences, and environmental management systems.</p>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="research-card fade-up" style="transition-delay:0.2s" data-num="04">
+      <h4>Geospatial Data Analytics Pipeline</h4>
+      <p>End-to-end data pipeline for ingesting, preprocessing, and analyzing large-scale raster/vector geospatial datasets with automated feature engineering and pattern recognition.</p>
+      <div class="research-tags">
+        <span>Python</span><span>Spatial Analysis</span><span>GPU Training</span>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>Skills</h2>
-          <div class="accent-bar"></div>
-        </div>
-        <div class="skills-grid">
-          <span class="skill-tag">QGIS</span>
-          <span class="skill-tag">GIS &amp; Spatial Analysis</span>
-          <span class="skill-tag">Front-End Development</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">Machine Learning</span>
-          <span class="skill-tag">Data Analysis</span>
-          <span class="skill-tag">Startup Development</span>
-          <span class="skill-tag">PyTorch</span>
-          <span class="skill-tag">Remote Sensing</span>
-          <span class="skill-tag">Deep Learning</span>
-          <span class="skill-tag">NetCDF / Raster Data</span>
-          <span class="skill-tag">AI-Based Matching</span>
-          <span class="skill-tag">Real-Time Systems</span>
-          <span class="skill-tag">Product Design</span>
-        </div>
-      </div>
-    </section>
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">06 — Certifications</div>
+  <div class="certs-grid">
+    <div class="cert-item fade-up">
+      <div class="cert-icon">☕</div>
+      <div><div class="cert-name">Learning Java 11</div><div class="cert-issuer">LinkedIn Learning</div></div>
+    </div>
+    <div class="cert-item fade-up" style="transition-delay:0.05s">
+      <div class="cert-icon">🐳</div>
+      <div><div class="cert-name">Intro to Containers w/ Docker, Kubernetes &amp; OpenShift</div><div class="cert-issuer">IBM · Coursera</div></div>
+    </div>
+    <div class="cert-item fade-up" style="transition-delay:0.1s">
+      <div class="cert-icon">🐙</div>
+      <div><div class="cert-name">Getting Started with Git and GitHub</div><div class="cert-issuer">IBM · Coursera</div></div>
+    </div>
+    <div class="cert-item fade-up" style="transition-delay:0.15s">
+      <div class="cert-icon">🐍</div>
+      <div><div class="cert-name">Data Cleaning in Python Essential Training</div><div class="cert-issuer">LinkedIn Learning</div></div>
+    </div>
+    <div class="cert-item fade-up" style="transition-delay:0.2s">
+      <div class="cert-icon">📊</div>
+      <div><div class="cert-name">Career Essentials in Data Analysis</div><div class="cert-issuer">Microsoft &amp; LinkedIn</div></div>
+    </div>
+  </div>
+</section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="container">
-        <div class="section-header">
-          <h2>Projects</h2>
-          <div class="accent-bar"></div>
-        </div>
-        <div class="projects-grid">
-          <div class="project-card">
-            <span class="project-label">Startup Platform</span>
-            <h3>ZapServe</h3>
-            <p class="project-desc">An intelligent hyperlocal platform connecting users with local service providers and general labourers/daily wage workers in real time.</p>
-            <p class="project-features-title">Core Features</p>
-            <ul class="project-features">
-              <li>AI-Based Matching</li>
-              <li>Real-Time Location</li>
-              <li>Instant Booking</li>
-              <li>In-App Chat</li>
-              <li>Secure Payments</li>
-              <li>Provider Onboarding</li>
-              <li>Admin Panel</li>
-              <li>Ratings &amp; Reviews</li>
-              <li>Multi-Language Ready</li>
-            </ul>
-          </div>
-          <div class="project-card">
-            <span class="project-label">Deep Tech / AI</span>
-            <h3>Feature Extraction AI System</h3>
-            <p class="project-desc">An AI system that processes satellite, GIS, and scientific datasets to automatically extract meaningful features for analysis and modeling.</p>
-            <p class="project-features-title">Core Features</p>
-            <ul class="project-features">
-              <li>NetCDF / Raster / Vector Ingestion</li>
-              <li>Preprocessing Pipeline</li>
-              <li>Automated Feature Extraction</li>
-              <li>Spatial Pattern Recognition</li>
-              <li>GPU-Accelerated Training</li>
-              <li>PyTorch Integration</li>
-              <li>Model Validation</li>
-              <li>Structured Output</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">07 — Achievements</div>
+  <div class="workshops-list">
+    <div class="workshop-item fade-up">
+      <p><strong>DPIIT Recognized Startup</strong><br>ZapServe Interconnecting Pvt Ltd recognized under the Startup India initiative by DPIIT, Government of India.</p>
+    </div>
+    <div class="workshop-item fade-up" style="transition-delay:0.05s">
+      <p><strong>MVP Platform Deployed</strong><br>Successfully built and deployed the minimum viable product for the ZapServe hyperlocal service platform.</p>
+    </div>
+    <div class="workshop-item fade-up" style="transition-delay:0.1s">
+      <p><strong>Startup Pitching Programs</strong><br>Participated in competitive startup pitching events, presenting ZapServe's vision to investors and mentors.</p>
+    </div>
+    <div class="workshop-item fade-up" style="transition-delay:0.15s">
+      <p><strong>Co-Founded ZapServe</strong><br>Co-founded ZapServe Interconnecting Pvt Ltd — an incorporated technology company building for the hyperlocal economy.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>Certifications</h2>
-          <div class="accent-bar"></div>
-        </div>
-        <div class="certs-grid">
-          <div class="cert-card">
-            <div class="cert-icon">J</div>
-            <h3>Learning Java 11</h3>
-            <p class="cert-org">LinkedIn Learning</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-icon">K</div>
-            <h3>Intro to Containers w/ Docker, Kubernetes &amp; OpenShift</h3>
-            <p class="cert-org">IBM / Coursera</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-icon">G</div>
-            <h3>Getting Started with Git and GitHub</h3>
-            <p class="cert-org">IBM / Coursera</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-icon">P</div>
-            <h3>Data Cleaning in Python Essential Training</h3>
-            <p class="cert-org">LinkedIn Learning</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-icon">M</div>
-            <h3>Career Essentials in Data Analysis</h3>
-            <p class="cert-org">Microsoft &amp; LinkedIn</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">08 — Contact</div>
+  <div class="contact-grid">
+    <div class="contact-info fade-up">
+      <div class="contact-row"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><div class="contact-value">+91 9961317151</div></div></div>
+      <div class="contact-row"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:aaronr43210@gmail.com">aaronr43210@gmail.com</a></div></div></div>
+      <div class="contact-row"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-value">Thiruvananthapuram, Kerala, India</div></div></div>
+      <div class="contact-row"><div class="contact-icon">in</div><div><div class="contact-label">LinkedIn</div><div class="contact-value"><a href="https://www.linkedin.com/in/aaronr35" target="_blank" rel="noopener">linkedin.com/in/aaronr35</a></div></div></div>
+      <div class="contact-row"><div class="contact-icon">🎓</div><div><div class="contact-label">Currently</div><div class="contact-value">MSc. Data Science &amp; Geoinformatics · Digital University Kerala</div></div></div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <p class="contact-quote">"Building real-world technology solutions that connect people with the services they need — where data science meets entrepreneurship."</p>
+    </div>
+  </div>
+</section>
 
-    <!-- ACHIEVEMENTS -->
-    <section id="achievements">
-      <div class="container">
-        <div class="section-header">
-          <h2>Achievements</h2>
-          <div class="accent-bar"></div>
-        </div>
-        <div class="achievements-grid">
-          <div class="achievement-card">
-            <div class="achievement-icon">&#9733;</div>
-            <div>
-              <h3>DPIIT Recognized Startup</h3>
-              <p>ZapServe Interconnecting Pvt Ltd recognized under the Startup India initiative by DPIIT, Government of India.</p>
-            </div>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-icon">&#9889;</div>
-            <div>
-              <h3>MVP Platform Deployed</h3>
-              <p>Successfully built and deployed the minimum viable product for the ZapServe hyperlocal service platform.</p>
-            </div>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-icon">&#127942;</div>
-            <div>
-              <h3>Startup Pitching Programs</h3>
-              <p>Participated in competitive startup pitching events, presenting ZapServe's vision to investors and mentors.</p>
-            </div>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-icon">&#128640;</div>
-            <div>
-              <h3>Co-Founded ZapServe</h3>
-              <p>Co-founded ZapServe Interconnecting Pvt Ltd, an incorporated technology company building for the hyperlocal economy.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<footer><p>© 2025 Aaron R · Built with curiosity &amp; code</p></footer>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>Contact</h2>
-          <div class="accent-bar"></div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-row">
-            <div class="contact-icon">&#9993;</div>
-            <div>
-              <p class="contact-label">Email</p>
-              <p class="contact-value"><a href="mailto:aaronr43210@gmail.com">aaronr43210@gmail.com</a></p>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="contact-icon">&#9742;</div>
-            <div>
-              <p class="contact-label">Mobile</p>
-              <p class="contact-value">+91 9961317151</p>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="contact-icon">in</div>
-            <div>
-              <p class="contact-label">LinkedIn</p>
-              <p class="contact-value"><a href="https://www.linkedin.com/in/aaronr35" target="_blank" rel="noopener">linkedin.com/in/aaronr35</a></p>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="contact-icon">&#9873;</div>
-            <div>
-              <p class="contact-label">Address</p>
-              <p class="contact-value">Kanjiramninna, Kannaravila, Nellimoodu PO,<br />Thiruvananthapuram, Kerala 695524</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <p>&copy; 2025 Aaron R. All rights reserved.</p>
-    </footer>
-
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<script>
+  // Fade-up on scroll
+  const els = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+</script>
+</body>
 </html>
