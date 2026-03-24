@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+here<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -401,50 +401,31 @@
 
       /* ---- SKILLS ---- */
       .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
         max-width: 720px;
         margin: 0 auto;
+        justify-content: center;
       }
 
-      .skill-card {
+      .skill-tag {
         background: var(--card);
         border: 1px solid var(--card-border);
-        border-radius: var(--radius);
-        padding: 20px;
-        transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      }
-
-      .skill-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(56, 189, 248, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      }
-
-      .skill-name {
+        border-radius: 40px;
+        padding: 10px 22px;
         font-size: 0.9rem;
         font-weight: 500;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
+        color: var(--text-secondary);
+        transition: transform 0.3s, border-color 0.3s, background 0.3s, color 0.3s;
+        cursor: default;
       }
 
-      .skill-name span { color: var(--text-muted); font-size: 0.8rem; }
-
-      .skill-track {
-        height: 6px;
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 4px;
-        overflow: hidden;
-      }
-
-      .skill-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-        border-radius: 4px;
-        width: 0;
-        animation: fillBar 1.2s ease forwards;
+      .skill-tag:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        background: var(--accent-glow);
+        color: var(--text);
       }
 
       /* ---- PROJECTS ---- */
@@ -452,7 +433,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
       }
 
@@ -487,10 +468,36 @@
         letter-spacing: -0.01em;
       }
 
-      .project-card p {
+      .project-card .project-desc {
         color: var(--text-secondary);
         font-size: 0.9rem;
         line-height: 1.7;
+        margin-bottom: 16px;
+      }
+
+      .project-features-title {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 10px;
+      }
+
+      .project-features {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .project-features li {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        background: rgba(56, 189, 248, 0.06);
+        border: 1px solid rgba(56, 189, 248, 0.12);
+        border-radius: 20px;
+        padding: 4px 12px;
       }
 
       /* ---- CERTIFICATIONS ---- */
@@ -723,7 +730,7 @@
     <!-- HEADER -->
     <header>
       <div class="nav-inner">
-        <a href="#home" class="nav-brand">Aaron<span>.</span></a>
+        <a href="#home" class="nav-brand">Aaron R<span>.</span></a>
         <input type="checkbox" id="nav-toggle" />
         <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
@@ -746,7 +753,7 @@
     <section class="hero" id="home">
       <div class="hero-content">
         <img
-          src="IMG_8231_3.jpeg"
+          src="/IMG_8231_3.jpeg"
           alt="Aaron R - Portrait"
           class="hero-photo"
         />
@@ -870,48 +877,20 @@
           <div class="accent-bar"></div>
         </div>
         <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-name">QGIS <span>90%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="--w: 90%"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">GIS & Spatial Analysis <span>88%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="--w: 88%"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Front-End Development <span>82%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="--w: 82%"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Python <span>80%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="--w: 80%"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Machine Learning <span>72%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="--w: 72%"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Data Analysis <span>85%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="--w: 85%"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Startup Development <span>78%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="--w: 78%"></div>
-            </div>
-          </div>
+          <span class="skill-tag">QGIS</span>
+          <span class="skill-tag">GIS &amp; Spatial Analysis</span>
+          <span class="skill-tag">Front-End Development</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">Startup Development</span>
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">Remote Sensing</span>
+          <span class="skill-tag">Deep Learning</span>
+          <span class="skill-tag">NetCDF / Raster Data</span>
+          <span class="skill-tag">AI-Based Matching</span>
+          <span class="skill-tag">Real-Time Systems</span>
+          <span class="skill-tag">Product Design</span>
         </div>
       </div>
     </section>
@@ -927,12 +906,35 @@
           <div class="project-card">
             <span class="project-label">Startup Platform</span>
             <h3>ZapServe</h3>
-            <p>An intelligent hyperlocal service platform that uses AI-driven matching, real-time location detection, and smart automation to connect users with trusted local service providers instantly.</p>
+            <p class="project-desc">An intelligent hyperlocal platform connecting users with local service providers and general labourers/daily wage workers in real time.</p>
+            <p class="project-features-title">Core Features</p>
+            <ul class="project-features">
+              <li>AI-Based Matching</li>
+              <li>Real-Time Location</li>
+              <li>Instant Booking</li>
+              <li>In-App Chat</li>
+              <li>Secure Payments</li>
+              <li>Provider Onboarding</li>
+              <li>Admin Panel</li>
+              <li>Ratings &amp; Reviews</li>
+              <li>Multi-Language Ready</li>
+            </ul>
           </div>
           <div class="project-card">
-            <span class="project-label">Productivity Tool</span>
-            <h3>ZapBook</h3>
-            <p>A digital notebook system designed for structured note-taking, knowledge management, and seamless organization of research and project documentation.</p>
+            <span class="project-label">Deep Tech / AI</span>
+            <h3>Feature Extraction AI System</h3>
+            <p class="project-desc">An AI system that processes satellite, GIS, and scientific datasets to automatically extract meaningful features for analysis and modeling.</p>
+            <p class="project-features-title">Core Features</p>
+            <ul class="project-features">
+              <li>NetCDF / Raster / Vector Ingestion</li>
+              <li>Preprocessing Pipeline</li>
+              <li>Automated Feature Extraction</li>
+              <li>Spatial Pattern Recognition</li>
+              <li>GPU-Accelerated Training</li>
+              <li>PyTorch Integration</li>
+              <li>Model Validation</li>
+              <li>Structured Output</li>
+            </ul>
           </div>
         </div>
       </div>
