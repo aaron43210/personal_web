@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aaron R — AI Engineer · GeoAI Researcher · Portfolio</title>
+    <title>Aaron R — AI/ML Engineer · GeoAI · Portfolio</title>
     <meta name="description"
-        content="Portfolio of Aaron R — Co-Founder at ZapServe, MSc Data Science & Geoinformatics, AI Engineer, GeoAI Researcher building Agentic AI and Geospatial Intelligence Systems." />
+        content="Portfolio of Aaron R — M.Sc. Data Science & Geoinformatics student, ZapServe co-founder and AI/ML Engineer building geospatial ML, computer vision, distributed compute tools and agentic AI systems." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,8 +28,8 @@
             --line: #e0dfd8;
             --bg: #f9f8f4;
             --card: #ffffff;
-            --accent: #1a4a8a;
-            --accent2: #3a7abf;
+            --accent: #1a1a18;
+            --accent2: #ffffff;
         }
 
         html {
@@ -163,7 +163,7 @@
         }
 
         .hero-cta:hover {
-            background: var(--accent);
+            background: var(--soft);
             transform: translateY(-2px);
         }
 
@@ -197,7 +197,7 @@
             width: 240px;
             height: 240px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent2) 0%, var(--accent) 100%);
+            background: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -566,7 +566,7 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            background: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -801,6 +801,151 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ─── ADDITIONS: project links, mobile menu, small-screen fixes ── */
+        .research-card h4,
+        .research-card .project-highlight {
+            padding-right: 3.5rem; /* keep clear of the big card number */
+        }
+
+        .research-card h4 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .research-card h4 a:hover {
+            color: var(--accent);
+        }
+
+        .proj-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1.1rem;
+        }
+
+        .proj-links a {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.65rem;
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            color: var(--accent);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .proj-links a:hover,
+        .proj-links a.live {
+            background: var(--accent);
+            color: white;
+        }
+
+        .proj-links a.live:hover {
+            background: var(--soft);
+            border-color: var(--soft);
+        }
+
+        .tl-desc a,
+        .about-text a {
+            color: var(--accent);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--line);
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+            color: var(--ink);
+            cursor: pointer;
+        }
+
+        .certs-grid {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+        }
+
+        .workshops-list {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+        }
+
+        .interests-grid {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+        }
+
+        .skills-grid {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        }
+
+        .contact-value {
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 900px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                padding: 0.5rem 5vw 1rem;
+                background: rgba(249, 248, 244, 0.98);
+                border-bottom: 1px solid var(--line);
+                transform: translateY(-130%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.open {
+                transform: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .hero-tags {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 560px) {
+            section {
+                padding: 72px 16px;
+            }
+
+            nav {
+                padding: 0 16px;
+            }
+
+            .research-card {
+                padding: 1.5rem;
+            }
+
+            .contact-quote {
+                padding-left: 1.2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .fade-up {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
     </style>
 </head>
 
@@ -809,14 +954,15 @@
     <!-- NAV -->
     <nav>
         <a class="nav-logo" href="#hero">Aaron R</a>
-        <ul class="nav-links">
+        <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#technologies">Technologies</a></li>
             <li><a href="#research">Research</a></li>
-            <li><a href="#projects">Projects</a></li>
             <li><a href="#certifications">Certs</a></li>
             <li><a href="#achievements">Achievements</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -829,25 +975,26 @@
             <p class="hero-eyebrow">Portfolio</p>
             <h1>Aaron <em>R</em></h1>
             <p class="hero-desc">
-                Co-Founder at ZapServe &bull; MSc Data Science &amp; Geoinformatics Student &bull;
-                AI Engineer &bull; GeoAI Researcher &bull; Building Agentic AI and Geospatial Intelligence Systems.
+                M.Sc. Data Science &amp; Geoinformatics Student (CGPA 9.2) &bull; Co-Founder at ZapServe &bull;
+                AI/ML Engineer &bull; GeoAI &bull; Building geospatial ML, computer vision, distributed compute tools
+                and agentic AI systems.
             </p>
-            <a href="#contact" class="hero-cta">Get in touch →</a>
+            <a href="#projects" class="hero-cta">View projects →</a>
         </div>
         <div class="hero-visual fade-up" style="transition-delay:0.2s">
             <div class="avatar-ring">
                 <div class="avatar-inner">
-                    <img src="https://raw.githubusercontent.com/aaron43210/personal_web/main/IMG_8231.jpeg" alt="Aaron R">
+                    <img src="IMG_8231.jpeg" alt="Aaron R" width="240" height="240">
                 </div>
             </div>
             <div class="hero-tags">
                 <span class="tag">Python</span>
-                <span class="tag">AI Engineer</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">Apache Spark</span>
                 <span class="tag">GeoAI</span>
+                <span class="tag">Computer Vision</span>
                 <span class="tag">LLMs</span>
-                <span class="tag">RAG</span>
                 <span class="tag">Agentic AI</span>
-                <span class="tag">GIS</span>
                 <span class="tag">Startup</span>
             </div>
         </div>
@@ -858,26 +1005,26 @@
         <div class="section-label">01 — About</div>
         <div class="about-grid">
             <div class="about-text fade-up">
-                <p>I'm a Co-Founder &amp; Director of <strong style="color:var(--ink)">ZapServe Interconnecting Pvt Ltd</strong> — a DPIIT Recognized startup building an AI-powered hyperlocal service platform. I combine intelligent matching, real-time location detection, and multi-agent workflows to connect users with trusted service providers.</p>
-                <p>Currently pursuing my <strong style="color:var(--ink)">MSc in Data Science &amp; Geoinformatics</strong> at Digital University Kerala / IIITM-K, I work at the intersection of Agentic AI, GeoAI, and Geospatial Intelligence — building systems like <strong style="color:var(--ink)">GeoSI</strong>, an AI-powered conversational geospatial operating system.</p>
-                <p>My work spans LLMs, RAG, Heterogeneous Graph Neural Networks (HGNNs), computer vision for satellite imagery, and autonomous GIS workflow automation — translating cutting-edge AI research into real-world systems.</p>
+                <p>I'm an <strong style="color:var(--ink)">M.Sc. Data Science &amp; Geoinformatics</strong> student at Digital University Kerala (CGPA 9.2) and co-founder of <strong style="color:var(--ink)">ZapServe Interconnecting Pvt Ltd</strong>, an on-demand service marketplace now live on the App Store and Google Play.</p>
+                <p>With a B.Sc. in Geology behind me, I build ML for the Earth: hyperspectral mineral mapping, thermal and crop analysis, drone-imagery segmentation and planetary GIS, using PyTorch, Apache Spark, PostGIS and SQL.</p>
+                <p>I've published <strong style="color:var(--ink)">4 open-source tools and models</strong>, including VS Code extensions with 5K+ downloads, a QGIS plugin and models on Hugging Face, and I like systems that ship: tested, measured and deployed.</p>
             </div>
             <div class="about-stats fade-up" style="transition-delay:0.15s">
                 <div class="stat-card">
-                    <div class="stat-num">DPIIT</div>
-                    <div class="stat-label">Recognized Startup</div>
+                    <div class="stat-num">9.2</div>
+                    <div class="stat-label">M.Sc. CGPA</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">8+</div>
-                    <div class="stat-label">Certifications</div>
+                    <div class="stat-num">5.5K+</div>
+                    <div class="stat-label">VS Code Extension Downloads</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">96.6%</div>
-                    <div class="stat-label">HGNN Model Accuracy</div>
+                    <div class="stat-num">99.99%</div>
+                    <div class="stat-label">HydraNet Mineral Agreement</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">GeoSI</div>
-                    <div class="stat-label">AI Geospatial System</div>
+                    <div class="stat-num">88.5%</div>
+                    <div class="stat-label">TerraX Segmentation mIoU</div>
                 </div>
             </div>
         </div>
@@ -888,24 +1035,16 @@
         <div class="section-label">02 — Education</div>
         <div class="timeline fade-up">
             <div class="tl-item">
-                <div class="tl-year">2025 – 2027</div>
-                <div class="tl-degree">MSc. Data Science &amp; Geoinformatics</div>
-                <div class="tl-school">Digital University Kerala / IIITM-K</div>
-                <p class="tl-desc">Specializing in applied data science, geospatial analytics, machine learning, GeoAI,
-                    and intelligent systems design. Research focus on Agentic AI, LLMs, and Geospatial Intelligence Systems.</p>
+                <div class="tl-year">2025 – Expected January 2027 · CGPA 9.2</div>
+                <div class="tl-degree">M.Sc. Data Science and Geoinformatics</div>
+                <div class="tl-school">Digital University Kerala, Thiruvananthapuram</div>
+                <p class="tl-desc">Applied machine learning, geospatial analytics, remote sensing, big data and GeoAI.</p>
             </div>
             <div class="tl-item">
-                <div class="tl-year">2021 – 2024</div>
-                <div class="tl-degree">BSc. Geology</div>
-                <div class="tl-school">University of Kerala</div>
-                <p class="tl-desc">Core studies in earth sciences, spatial analysis, GIS mapping, and geological field
-                    research methodologies — forming the foundation for my GeoAI and remote sensing work.</p>
-            </div>
-            <div class="tl-item">
-                <div class="tl-year">2019 – 2021</div>
-                <div class="tl-degree">Higher Secondary · Agriculture Science</div>
-                <div class="tl-school">Govt. VHSS Malayinkil</div>
-                <p class="tl-desc">Foundation in agricultural sciences, environmental studies, and biological systems.</p>
+                <div class="tl-year">June 2021 – August 2024 · CGPA 7.2</div>
+                <div class="tl-degree">B.Sc. Geology (Minor in Earth Science)</div>
+                <div class="tl-school">University of Kerala, Thiruvananthapuram</div>
+                <p class="tl-desc">Earth sciences, spatial analysis and GIS mapping — the foundation for my GeoAI and remote sensing work.</p>
             </div>
         </div>
     </section>
@@ -915,130 +1054,296 @@
         <div class="section-label">03 — Experience</div>
         <div class="timeline fade-up">
             <div class="tl-item">
-                <div class="tl-year">2025 – Present · Full-time</div>
-                <div class="tl-degree">Co-Founder &amp; Director</div>
-                <div class="tl-school">ZapServe Interconnecting Pvt Ltd</div>
-                <p class="tl-desc">Leading product development, AI engineering, and platform architecture for a DPIIT Recognized
-                    hyperlocal service marketplace. Built and deployed the AI Matching Engine, managed MVP development, startup
-                    operations, fundraising preparation, and team building.</p>
+                <div class="tl-year">June 2025 – Present</div>
+                <div class="tl-degree">Co-Founder</div>
+                <div class="tl-school">ZapServe Interconnecting Private Limited</div>
+                <p class="tl-desc">Led backend engineering (30+ REST APIs, PostgreSQL, cloud deployment) for an on-demand MVP
+                    marketplace. Architected scalable infrastructure, improving operational efficiency by 20% with 95% pilot
+                    uptime. Drove end-to-end product architecture and technical roadmaps, and launched the ZapServe mobile app
+                    on iOS and Android.</p>
+                <div class="proj-links">
+                    <a class="live" href="https://zapserve.in" target="_blank" rel="noopener">zapserve.in ↗</a>
+                    <a href="https://apps.apple.com/in/app/zapserve/id6770597096" target="_blank" rel="noopener">App Store ↗</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.zapserve.app" target="_blank" rel="noopener">Google Play ↗</a>
+                </div>
             </div>
-            <div class="tl-item">
-                <div class="tl-year">2021 – 2024 · Academic</div>
-                <div class="tl-degree">Geology Specialist</div>
-                <div class="tl-school">University College Thiruvananthapuram</div>
-                <p class="tl-desc">Applied GIS and remote sensing techniques for geological surveys. Conducted
-                    fieldwork, spatial data analysis, and research presentations — grounding expertise in geospatial data processing.</p>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-label">04 — Projects</div>
+        <div class="research-grid">
+
+            <div class="research-card fade-up" data-num="01">
+                <div class="project-highlight">Production ML · Hyperspectral · AWS</div>
+                <h4><a href="https://hydranetmap.tech/" target="_blank" rel="noopener">HydraNet Maps ↗</a></h4>
+                <p>Turns NASA EMIT hyperspectral and Landsat 8/9 imagery into mineral, crop and thermal maps on PostGIS. A
+                    502K-parameter three-head PyTorch model reaches 99.99%+ mineral agreement on unseen scenes; served with
+                    ONNX over Kafka behind a Go REST API and React SPA. k6 test at 300 users: 0 failed of 55,225 requests,
+                    p95 5.4 ms.</p>
+                <div class="research-tags"><span>PyTorch</span><span>ONNX</span><span>Go</span><span>Kafka</span><span>Terraform</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://hydranetmap.tech/" target="_blank" rel="noopener">Live Site ↗</a>
+                    <a href="https://huggingface.co/aaronr43210/HydraNet-Hyperspectral" target="_blank" rel="noopener">Hugging Face ↗</a>
+                    <a href="https://github.com/aaron43210/remote_sensing_pipeline" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
             </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.08s" data-num="02">
+                <div class="project-highlight">Data Engineering · Lakehouse · Streaming</div>
+                <h4><a href="https://geoplatformkerala.tech" target="_blank" rel="noopener">Cloud-Native Geospatial Data Platform ↗</a></h4>
+                <p>Batch and streaming platform on AWS. Airflow ETL and dbt marts on PostgreSQL/PostGIS, gated by 23 data
+                    tests, over an Apache Iceberg lakehouse. Avro events stream through Redpanda to Flink; deployed with
+                    Terraform in a 5-person team.</p>
+                <div class="research-tags"><span>Airflow</span><span>dbt</span><span>Iceberg</span><span>Flink</span><span>AWS</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://geoplatformkerala.tech" target="_blank" rel="noopener">Live Site ↗</a>
+                    <a href="https://github.com/aaron43210/DATA_ENGINEERING_PROJECT" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.12s" data-num="03">
+                <div class="project-highlight">Planetary GIS · 3D Globe · Hyperspectral</div>
+                <h4><a href="https://mars-globe.aaronr.tech" target="_blank" rel="noopener">MarsGIS &amp; Mars Globe ↗</a></h4>
+                <p>Web GIS for Mars: an interactive 3D CesiumJS globe with NASA Mars Trek basemaps, plus a hyperspectral
+                    engine that runs the Spectral Angle Mapper on CRISM MTRDR cubes and shows results as map layers with
+                    full provenance. The globe is published as the mars-globe npm package.</p>
+                <div class="research-tags"><span>CesiumJS</span><span>CRISM</span><span>SAM</span><span>PostGIS</span><span>Docker</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://mars-globe.aaronr.tech" target="_blank" rel="noopener">Live Globe ↗</a>
+                    <a href="https://github.com/aaron43210/MARSGIS" target="_blank" rel="noopener">GitHub ↗</a>
+                    <a href="https://www.npmjs.com/package/mars-globe" target="_blank" rel="noopener">npm ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.16s" data-num="04">
+                <div class="project-highlight">Agentic AI · Privacy · MCP</div>
+                <h4><a href="https://shieldscout.aaronr.tech" target="_blank" rel="noopener">Shield-Scout ↗</a></h4>
+                <p>LLM agent swarm for privacy leak detection and redaction: a MetaPlanner dynamically spawns ReAct
+                    specialists using 14 MCP tools. Matches leaked images with PDQ perceptual hashing and PCA retrieval; a
+                    red-team agent retests each redaction. The Shield-Code VS Code extension (700+ downloads) scans
+                    workspaces for secrets, PII and unsafe code.</p>
+                <div class="research-tags"><span>LLM Agents</span><span>MCP</span><span>FastAPI</span><span>Vue</span><span>D3</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://shieldscout.aaronr.tech" target="_blank" rel="noopener">Live Site ↗</a>
+                    <a href="https://open-vsx.org/vscode/item?itemName=aaron43210.shield-code" target="_blank" rel="noopener">Open VSX ↗</a>
+                    <a href="https://github.com/aaron43210/Shield-Scout" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" data-num="05">
+                <div class="project-highlight">Developer Tool · Distributed Compute</div>
+                <h4><a href="https://open-vsx.org/extension/aaron43210/distributed-ai-compute" target="_blank" rel="noopener">Distributed AI Compute ↗</a></h4>
+                <p>VS Code extension (4.8K+ downloads) for remote code execution and model training over SSH, with one-click
+                    worker setup, parallel multi-language execution and Apache Spark training. A companion dashboard cut
+                    cluster job setup time by 40%.</p>
+                <div class="research-tags"><span>VS Code</span><span>SSH</span><span>Apache Spark</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://open-vsx.org/extension/aaron43210/distributed-ai-compute" target="_blank" rel="noopener">Open VSX ↗</a>
+                    <a href="https://github.com/lekshmipriya04/Distributed_Compute" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.08s" data-num="06">
+                <div class="project-highlight">HPC · QGIS Plugin · Hyperspectral</div>
+                <h4><a href="https://plugins.qgis.org/plugins/hyperspatial_processing/" target="_blank" rel="noopener">HyperSpatial Big Data ↗</a></h4>
+                <p>High-performance QGIS plugin with a C++17/GDAL and OpenMP/OpenCL engine for spectral indices, PCA and SAM.
+                    Processes a 224-band EnMAP hyperspectral scene in seconds; scales spatial analytics with Apache Spark and
+                    Sedona.</p>
+                <div class="research-tags"><span>C++17</span><span>GDAL</span><span>OpenMP</span><span>Sedona</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://plugins.qgis.org/plugins/hyperspatial_processing/" target="_blank" rel="noopener">QGIS Plugin ↗</a>
+                    <a href="https://github.com/aaron43210/HYPERSPECTRAL_DATA_DISTRIBUTED_SYSTEM" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.12s" data-num="07">
+                <div class="project-highlight">Computer Vision · Drone Orthophotos</div>
+                <h4><a href="https://huggingface.co/aaronr43210/TerraX" target="_blank" rel="noopener">TerraX ↗</a></h4>
+                <p>PyTorch segmentation model (SegFormer-B4, FPN, CBAM) reaching 88.5% mIoU across 4 aerial classes. Trained
+                    with Lovasz, focal and boundary losses on multi-GPU DDP; published as ONNX on Hugging Face.</p>
+                <div class="research-tags"><span>PyTorch</span><span>SegFormer</span><span>DDP</span><span>ONNX</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://huggingface.co/aaronr43210/TerraX" target="_blank" rel="noopener">Hugging Face ↗</a>
+                    <a href="https://github.com/aaron43210/DUK_Feature_Extraction_Model" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.16s" data-num="08">
+                <div class="project-highlight">LLM · Pretraining · Alignment</div>
+                <h4><a href="https://github.com/aaron43210/MiniSEAL" target="_blank" rel="noopener">MiniSEAL — Self-Owned LLM ↗</a></h4>
+                <p>Pretrained a 91M-parameter LLaMA-style model (RoPE, SwiGLU, RMSNorm) on a DGX A100. Aligned Qwen2.5-1.5B
+                    with LoRA, SFT and DPO, raising held-out QA F1 from 16.8% to 84.5%.</p>
+                <div class="research-tags"><span>PyTorch</span><span>LoRA</span><span>DPO</span><span>LLMs</span></div>
+                <div class="proj-links">
+                    <a href="https://github.com/aaron43210/MiniSEAL" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" data-num="09">
+                <div class="project-highlight">Fine-Tuning · IIT Bombay GeoAI Hackathon</div>
+                <h4><a href="https://aaronr43210-terrapulse-ai.hf.space/" target="_blank" rel="noopener">TerraPulse AI ↗</a></h4>
+                <p>Fine-tuned Qwen3-1.7B with LoRA on 3,000 generated intent examples. Decision accuracy rose from 89.3% to
+                    97.6% over the base model; ships GGUF inference with a verifier that blocks unsupported claims.</p>
+                <div class="research-tags"><span>Qwen3</span><span>LoRA</span><span>GGUF</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://aaronr43210-terrapulse-ai.hf.space/" target="_blank" rel="noopener">Live Demo ↗</a>
+                    <a href="https://github.com/aaron43210/GeoAI_Hackathon" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.08s" data-num="10">
+                <div class="project-highlight">Multi-Agent · GraphRAG</div>
+                <h4><a href="https://examgpt.netlify.app" target="_blank" rel="noopener">ExamGPT ↗</a></h4>
+                <p>Multi-agent learning platform with LangGraph and FastAPI, routing intents across specialised agents.
+                    Hybrid retrieval fuses pgvector HNSW and BM25 via Reciprocal Rank Fusion; deployed with Docker.</p>
+                <div class="research-tags"><span>LangGraph</span><span>RAG</span><span>pgvector</span><span>FastAPI</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://examgpt.netlify.app" target="_blank" rel="noopener">Live Demo ↗</a>
+                    <a href="https://github.com/aaron43210/EXAMGPT" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.12s" data-num="11">
+                <div class="project-highlight">Agentic GIS · 2nd Prize, Ventura</div>
+                <h4><a href="https://github.com/aaron43210/GeoSI" target="_blank" rel="noopener">GeoSI — Geospatial Intelligence System ↗</a></h4>
+                <p>14-agent LLM pipeline that turns plain-language requests into verified GIS workflows via PyQGIS and GDAL.
+                    GraphRAG with Qdrant and Neo4j, PostGIS storage and fully local inference through Ollama.</p>
+                <div class="research-tags"><span>LLM Agents</span><span>PyQGIS</span><span>GraphRAG</span><span>Ollama</span></div>
+                <div class="proj-links">
+                    <a href="https://github.com/aaron43210/GeoSI" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.16s" data-num="12">
+                <div class="project-highlight">Real-Time · Microservices · ML</div>
+                <h4><a href="https://duk.ac.in/busios/" target="_blank" rel="noopener">DUK Bus Tracker ↗</a></h4>
+                <p>10 FastAPI microservices with WebSocket GPS streaming, PostgreSQL, Redis and a React PWA. A LightGBM ETA
+                    model on road-network features retrains weekly and hot-swaps automatically.</p>
+                <div class="research-tags"><span>FastAPI</span><span>LightGBM</span><span>Redis</span><span>React</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://duk.ac.in/busios/" target="_blank" rel="noopener">Live App ↗</a>
+                    <a href="https://github.com/aaron43210/DUK-BusTracker" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" data-num="13">
+                <div class="project-highlight">Graph ML · Fraud Detection</div>
+                <h4><a href="https://creditcardfrauddetectionproject3.streamlit.app/" target="_blank" rel="noopener">Credit Card Fraud Detection ↗</a></h4>
+                <p>Compared Decision Tree, XGBoost and an attention-based heterogeneous GNN on IEEE-CIS data (3.5% fraud).
+                    Transaction, card and device graphs with temporal decay reached ROC-AUC ~0.94 vs ~0.92 for XGBoost.</p>
+                <div class="research-tags"><span>HGNN</span><span>XGBoost</span><span>Streamlit</span></div>
+                <div class="proj-links">
+                    <a class="live" href="https://creditcardfrauddetectionproject3.streamlit.app/" target="_blank" rel="noopener">Live Demo ↗</a>
+                    <a href="https://github.com/aaron43210/Credit_card_Fraud_Detection" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="research-card fade-up" style="transition-delay:0.08s" data-num="14">
+                <div class="project-highlight">Signal Processing · Edge AI</div>
+                <h4><a href="https://github.com/aaron43210/SIGNAL_PROCESSING_AI_ML" target="_blank" rel="noopener">Seismic Wildlife Classification ↗</a></h4>
+                <p>Benchmarked 13 classifiers (GAT, GCN, KAN, 1D-CNN, XGBoost, SVM) on 54,901 imbalanced seismic windows.
+                    Exposed data leakage with station-held-out CV and sized INT8 models for an ESP32-S3.</p>
+                <div class="research-tags"><span>GNN</span><span>KAN</span><span>XGBoost</span><span>ESP32</span></div>
+                <div class="proj-links">
+                    <a href="https://github.com/aaron43210/SIGNAL_PROCESSING_AI_ML" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills">
-        <div class="section-label">04 — Skills</div>
+        <div class="section-label">05 — Skills</div>
         <div class="skills-grid">
 
             <div class="skill-group fade-up">
-                <div class="skill-group-title"><span>💻</span> Programming &amp; Software Engineering</div>
+                <div class="skill-group-title"><span>🤖</span> AI/ML &amp; GenAI</div>
                 <ul class="skill-list">
-                    <li>Python</li>
-                    <li>SQL</li>
-                    <li>JavaScript, HTML, CSS</li>
-                    <li>C / C++</li>
-                    <li>Java</li>
-                    <li>Git &amp; GitHub</li>
-                    <li>Linux</li>
-                    <li>REST APIs</li>
-                </ul>
-            </div>
-
-            <div class="skill-group fade-up" style="transition-delay:0.07s">
-                <div class="skill-group-title"><span>🤖</span> Artificial Intelligence &amp; ML</div>
-                <ul class="skill-list">
-                    <li>Machine Learning</li>
-                    <li>Deep Learning</li>
-                    <li>Large Language Models (LLMs)</li>
-                    <li>Retrieval-Augmented Generation (RAG)</li>
-                    <li>Agentic AI Systems</li>
-                    <li>Multi-Agent Systems</li>
-                    <li>Generative AI &amp; Prompt Engineering</li>
-                    <li>Graph Neural Networks (GNNs / HGNNs)</li>
-                    <li>Computer Vision</li>
+                    <li>Machine Learning &amp; Deep Learning</li>
+                    <li>Computer Vision &amp; Semantic Segmentation</li>
+                    <li>NLP &amp; Large Language Models</li>
+                    <li>Fine-Tuning (LoRA, SFT, DPO)</li>
+                    <li>RAG &amp; Agentic Workflows</li>
+                    <li>Graph Neural Networks (GNN / GAT)</li>
+                    <li>Model Quantization &amp; ONNX</li>
                     <li>Feature Engineering</li>
                 </ul>
             </div>
 
-            <div class="skill-group fade-up" style="transition-delay:0.12s">
+            <div class="skill-group fade-up" style="transition-delay:0.07s">
                 <div class="skill-group-title"><span>🧠</span> AI Frameworks &amp; Libraries</div>
                 <ul class="skill-list">
                     <li>PyTorch</li>
-                    <li>Scikit-Learn</li>
-                    <li>OpenCV</li>
+                    <li>TensorFlow</li>
+                    <li>Scikit-learn</li>
+                    <li>Hugging Face Transformers</li>
                     <li>LangChain</li>
                     <li>LangGraph</li>
-                    <li>CrewAI</li>
-                    <li>Ollama</li>
-                    <li>Hugging Face Transformers</li>
-                    <li>Pydantic AI</li>
+                </ul>
+            </div>
+
+            <div class="skill-group fade-up" style="transition-delay:0.12s">
+                <div class="skill-group-title"><span>💻</span> Programming</div>
+                <ul class="skill-list">
+                    <li>Python &amp; NumPy</li>
+                    <li>SQL</li>
+                    <li>C / C++</li>
+                    <li>Data Structures &amp; Algorithms</li>
+                    <li>OOP &amp; Multithreading</li>
+                    <li>Git &amp; Linux</li>
                 </ul>
             </div>
 
             <div class="skill-group fade-up" style="transition-delay:0.17s">
-                <div class="skill-group-title"><span>🌍</span> Geospatial AI &amp; GIS</div>
+                <div class="skill-group-title"><span>🔀</span> Data Engineering &amp; Big Data</div>
                 <ul class="skill-list">
-                    <li>Geographic Information Systems (GIS)</li>
-                    <li>QGIS</li>
-                    <li>GeoAI</li>
-                    <li>Remote Sensing</li>
-                    <li>Satellite Image Analysis</li>
-                    <li>Geospatial Feature Extraction</li>
-                    <li>Raster &amp; Vector Data Processing</li>
-                    <li>GeoPandas</li>
-                    <li>PostGIS &amp; Spatial Databases</li>
-                    <li>NetCDF Processing</li>
-                    <li>Geospatial Intelligence Systems</li>
+                    <li>ETL Pipelines &amp; Data Modeling</li>
+                    <li>Data Warehousing</li>
+                    <li>Data Lakehouse (Apache Iceberg)</li>
+                    <li>Apache Spark, PySpark, Spark SQL, MLlib</li>
+                    <li>Hadoop</li>
+                    <li>Kafka</li>
+                    <li>Apache Airflow</li>
                 </ul>
             </div>
 
             <div class="skill-group fade-up" style="transition-delay:0.22s">
-                <div class="skill-group-title"><span>☁️</span> Cloud, DevOps &amp; Infrastructure</div>
+                <div class="skill-group-title"><span>☁️</span> Databases &amp; Cloud</div>
                 <ul class="skill-list">
-                    <li>Docker</li>
-                    <li>Kubernetes</li>
-                    <li>OpenShift</li>
-                    <li>Cloud Computing</li>
-                    <li>Containerization</li>
-                    <li>MLOps Fundamentals</li>
-                    <li>CI/CD Fundamentals</li>
-                    <li>Firebase &amp; Supabase</li>
+                    <li>PostgreSQL, PostGIS, pgvector</li>
+                    <li>Neo4j</li>
+                    <li>FAISS &amp; Vector Databases</li>
+                    <li>AWS S3</li>
+                    <li>Docker &amp; Kubernetes</li>
+                    <li>CI/CD</li>
+                    <li>FastAPI &amp; REST APIs</li>
                 </ul>
             </div>
 
             <div class="skill-group fade-up" style="transition-delay:0.27s">
-                <div class="skill-group-title"><span>📊</span> Data Science &amp; Analytics</div>
+                <div class="skill-group-title"><span>🌍</span> Geospatial</div>
                 <ul class="skill-list">
-                    <li>Data Cleaning &amp; Wrangling</li>
-                    <li>Data Visualization</li>
-                    <li>Exploratory Data Analysis (EDA)</li>
-                    <li>Statistical Analysis</li>
-                    <li>Predictive Analytics</li>
-                    <li>Business Intelligence</li>
-                    <li>Data Mining</li>
+                    <li>QGIS &amp; ArcGIS</li>
+                    <li>GeoPandas</li>
+                    <li>GDAL &amp; Rasterio</li>
+                    <li>Apache Sedona &amp; Spatial Big Data</li>
+                    <li>Google Earth Engine</li>
+                    <li>Remote Sensing &amp; Hyperspectral</li>
+                    <li>GeoAI</li>
                 </ul>
             </div>
 
             <div class="skill-group fade-up" style="transition-delay:0.32s">
-                <div class="skill-group-title"><span>🚀</span> Startup &amp; Product Development</div>
+                <div class="skill-group-title"><span>🚀</span> Startup &amp; Product</div>
                 <ul class="skill-list">
                     <li>Product Architecture</li>
                     <li>MVP Development</li>
                     <li>System Design</li>
-                    <li>AI Product Development</li>
-                    <li>Platform Architecture</li>
-                    <li>Entrepreneurship</li>
-                    <li>Technical Leadership</li>
-                    <li>Agile Development</li>
-                    <li>Team Management</li>
-                    <li>Business Strategy</li>
+                    <li>Technical Roadmaps</li>
+                    <li>Release Management</li>
                 </ul>
             </div>
 
@@ -1056,121 +1361,64 @@
 
     <!-- TECHNOLOGIES -->
     <section id="technologies">
-        <div class="section-label">05 — Technologies</div>
+        <div class="section-label">06 — Technologies</div>
         <div class="tech-cloud fade-up">
             <span class="tech-pill">Python</span>
             <span class="tech-pill">PyTorch</span>
-            <span class="tech-pill">Scikit-Learn</span>
-            <span class="tech-pill">OpenCV</span>
+            <span class="tech-pill">TensorFlow</span>
+            <span class="tech-pill">Scikit-learn</span>
+            <span class="tech-pill">Hugging Face</span>
+            <span class="tech-pill">ONNX</span>
             <span class="tech-pill">LangChain</span>
             <span class="tech-pill">LangGraph</span>
-            <span class="tech-pill">CrewAI</span>
-            <span class="tech-pill">Ollama</span>
-            <span class="tech-pill">Hugging Face</span>
-            <span class="tech-pill">Pydantic AI</span>
+            <span class="tech-pill">Apache Spark</span>
+            <span class="tech-pill">PySpark</span>
+            <span class="tech-pill">Apache Sedona</span>
+            <span class="tech-pill">Kafka</span>
+            <span class="tech-pill">Apache Airflow</span>
+            <span class="tech-pill">dbt</span>
+            <span class="tech-pill">Apache Iceberg</span>
+            <span class="tech-pill">Hadoop</span>
+            <span class="tech-pill">PostgreSQL</span>
+            <span class="tech-pill">PostGIS</span>
+            <span class="tech-pill">pgvector</span>
+            <span class="tech-pill">Neo4j</span>
+            <span class="tech-pill">FAISS</span>
+            <span class="tech-pill">AWS</span>
+            <span class="tech-pill">Terraform</span>
             <span class="tech-pill">Docker</span>
             <span class="tech-pill">Kubernetes</span>
-            <span class="tech-pill">OpenShift</span>
-            <span class="tech-pill">Git</span>
-            <span class="tech-pill">GitHub</span>
+            <span class="tech-pill">FastAPI</span>
             <span class="tech-pill">QGIS</span>
+            <span class="tech-pill">ArcGIS</span>
             <span class="tech-pill">GeoPandas</span>
-            <span class="tech-pill">PostGIS</span>
-            <span class="tech-pill">Linux</span>
-            <span class="tech-pill">Firebase</span>
-            <span class="tech-pill">Supabase</span>
-            <span class="tech-pill">React</span>
-            <span class="tech-pill">TypeScript</span>
-            <span class="tech-pill">Tailwind CSS</span>
-            <span class="tech-pill">Vite</span>
+            <span class="tech-pill">GDAL</span>
+            <span class="tech-pill">Rasterio</span>
+            <span class="tech-pill">Google Earth Engine</span>
+            <span class="tech-pill">CesiumJS</span>
             <span class="tech-pill">SQL</span>
-            <span class="tech-pill">NetCDF</span>
-            <span class="tech-pill">REST APIs</span>
             <span class="tech-pill">C / C++</span>
-            <span class="tech-pill">Java</span>
+            <span class="tech-pill">Git</span>
+            <span class="tech-pill">Linux</span>
         </div>
     </section>
 
     <!-- RESEARCH INTERESTS -->
     <section id="research">
-        <div class="section-label">06 — Research Interests</div>
+        <div class="section-label">07 — Research Interests</div>
         <div class="interests-grid fade-up">
-            <div class="interest-card"><div class="interest-dot"></div><span>Agentic AI Systems</span></div>
             <div class="interest-card"><div class="interest-dot"></div><span>Geospatial Artificial Intelligence (GeoAI)</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>Large Language Models (LLMs)</span></div>
+            <div class="interest-card"><div class="interest-dot"></div><span>Hyperspectral Remote Sensing</span></div>
+            <div class="interest-card"><div class="interest-dot"></div><span>AI for Earth &amp; Planetary Observation</span></div>
+            <div class="interest-card"><div class="interest-dot"></div><span>Computer Vision for Aerial &amp; Satellite Imagery</span></div>
+            <div class="interest-card"><div class="interest-dot"></div><span>Agentic AI &amp; Multi-Agent Systems</span></div>
+            <div class="interest-card"><div class="interest-dot"></div><span>Large Language Models &amp; Fine-Tuning</span></div>
             <div class="interest-card"><div class="interest-dot"></div><span>Retrieval-Augmented Generation (RAG)</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>Multi-Agent Systems</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>AI for Earth Observation</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>Computer Vision for Remote Sensing</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>Geospatial Intelligence Systems</span></div>
+            <div class="interest-card"><div class="interest-dot"></div><span>Graph Neural Networks</span></div>
+            <div class="interest-card"><div class="interest-dot"></div><span>Spatial Big Data &amp; Distributed Computing</span></div>
             <div class="interest-card"><div class="interest-dot"></div><span>Autonomous GIS Workflow Automation</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>Spatial Knowledge Graphs</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>Deep Learning for Satellite Imagery</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>AI-Powered Decision Support Systems</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>Graph Neural Networks (GNNs &amp; HGNNs)</span></div>
-            <div class="interest-card"><div class="interest-dot"></div><span>Generative AI &amp; Prompt Engineering</span></div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div class="section-label">07 — Projects</div>
-        <div class="research-grid">
-
-            <div class="research-card fade-up" data-num="01">
-                <div class="project-highlight">GeoAI · Multi-Agent · LLMs · RAG</div>
-                <h4>GeoSI — Geospatial Intelligence System</h4>
-                <p>AI-powered conversational geospatial operating system integrating LLMs, RAG, GIS, GeoAI, and multi-agent workflows. Enables natural language interaction with spatial data, automated GIS operations, and intelligent geospatial decision support.</p>
-                <div class="research-tags">
-                    <span>LangGraph</span><span>RAG</span><span>GeoAI</span><span>LLMs</span><span>Multi-Agent</span>
-                </div>
-            </div>
-
-            <div class="research-card fade-up" style="transition-delay:0.08s" data-num="02">
-                <div class="project-highlight">HGNN · Graph Neural Networks · 96.6% Accuracy</div>
-                <h4>Credit Card Fraud Detection using HGNN</h4>
-                <p>Heterogeneous Graph Neural Network model for credit card fraud detection achieving 96.6% accuracy and 0.79 ROC-AUC. Models transaction networks as heterogeneous graphs to identify complex fraud patterns invisible to traditional methods.</p>
-                <div class="research-tags">
-                    <span>PyTorch</span><span>HGNN</span><span>GNN</span><span>Fraud Detection</span>
-                </div>
-            </div>
-
-            <div class="research-card fade-up" style="transition-delay:0.12s" data-num="03">
-                <div class="project-highlight">Agentic AI · RAG · LangGraph</div>
-                <h4>ExamGPT — Agentic RAG Exam System</h4>
-                <p>Agentic RAG system for intelligent exam preparation using LangGraph and LLMs. Autonomously retrieves relevant study material, generates contextual questions, evaluates answers, and adapts difficulty — acting as an intelligent AI study companion.</p>
-                <div class="research-tags">
-                    <span>LangGraph</span><span>RAG</span><span>LLMs</span><span>Agentic AI</span>
-                </div>
-            </div>
-
-            <div class="research-card fade-up" style="transition-delay:0.16s" data-num="04">
-                <div class="project-highlight">Computer Vision · YOLO · Satellite Imagery</div>
-                <h4>AI-Powered Geospatial Feature Extraction</h4>
-                <p>YOLO + OpenCV + PyTorch based system for automated extraction of geospatial features from satellite imagery. Detects and classifies terrain features, land use patterns, and infrastructure elements from high-resolution satellite data.</p>
-                <div class="research-tags">
-                    <span>YOLO</span><span>PyTorch</span><span>OpenCV</span><span>Remote Sensing</span>
-                </div>
-            </div>
-
-            <div class="research-card fade-up" style="transition-delay:0.2s" data-num="05">
-                <div class="project-highlight">AI Matching · Hyperlocal · Startup</div>
-                <h4>ZapServe AI Matching Engine</h4>
-                <p>AI-based worker recommendation and hyperlocal service allocation system powering the ZapServe platform. Combines real-time location intelligence, skill matching algorithms, and demand prediction to optimally connect users with service providers.</p>
-                <div class="research-tags">
-                    <span>AI Matching</span><span>Real-Time</span><span>Startup</span><span>Platform</span>
-                </div>
-            </div>
-
-            <div class="research-card fade-up" style="transition-delay:0.24s" data-num="06">
-                <div class="project-highlight">GIS · Remote Sensing · Field Research</div>
-                <h4>Geological Survey &amp; GIS Mapping</h4>
-                <p>Applied remote sensing and GIS techniques for geological field surveys — spatial data analysis, terrain modeling, raster processing, and research presentations at University of Kerala. Foundation for advanced GeoAI research.</p>
-                <div class="research-tags">
-                    <span>QGIS</span><span>Remote Sensing</span><span>Field Research</span><span>GeoPandas</span>
-                </div>
-            </div>
-
+            <div class="interest-card"><div class="interest-dot"></div><span>Edge AI &amp; Model Compression</span></div>
+            <div class="interest-card"><div class="interest-dot"></div><span>Privacy &amp; AI Safety Tooling</span></div>
         </div>
     </section>
 
@@ -1182,60 +1430,70 @@
             <div class="cert-item fade-up">
                 <div class="cert-icon">☁️</div>
                 <div class="cert-body">
-                    <div class="cert-name">Google Cloud Data Analytics Professional Certificate</div>
+                    <div class="cert-name">Google Cloud Data Analytics Certificate (2026)</div>
                     <div class="cert-issuer">Google · Credly</div>
-                    <div class="cert-skills">Data Analytics · SQL · Data Visualization · Business Intelligence · Dashboarding · Cloud Data Workflows</div>
-                    <a class="cert-link" href="https://www.credly.com/badges/f821a0b3-2e63-4f35-bff6-3b116b1e6d34/linked_in_profile" target="_blank" rel="noopener">View Badge ↗</a>
+                    <div class="cert-skills">Data Analytics · SQL · Data Visualization · Business Intelligence · Cloud Data Workflows</div>
+                    <a class="cert-link" href="https://www.credly.com/badges/f821a0b3-2e63-4f35-bff6-3b116b1e6d34" target="_blank" rel="noopener">View Badge ↗</a>
                 </div>
             </div>
 
             <div class="cert-item fade-up" style="transition-delay:0.05s">
-                <div class="cert-icon">🐳</div>
+                <div class="cert-icon">🧠</div>
                 <div class="cert-body">
-                    <div class="cert-name">Containers with Docker, Kubernetes &amp; OpenShift</div>
+                    <div class="cert-name">IBM RAG and Agentic AI Certification (2026)</div>
                     <div class="cert-issuer">IBM · Coursera</div>
-                    <div class="cert-skills">Docker · Kubernetes · OpenShift · Containerization · Cloud-Native · DevOps · Microservices</div>
-                    <a class="cert-link" href="https://coursera.org/share/cf02d33cfa60099108df962cd09bca00" target="_blank" rel="noopener">View Certificate ↗</a>
+                    <div class="cert-skills">RAG · Agentic AI · LLMs · Vector Databases · LangChain · Multi-Agent Systems</div>
+                    <a class="cert-link" href="https://coursera.org/share/63fe2cd194275750f54bc5424ec361ae" target="_blank" rel="noopener">View Certificate ↗</a>
                 </div>
             </div>
 
             <div class="cert-item fade-up" style="transition-delay:0.1s">
-                <div class="cert-icon">🌐</div>
-                <div class="cert-body">
-                    <div class="cert-name">Computer Networks and Network Security</div>
-                    <div class="cert-issuer">IBM · Coursera</div>
-                    <div class="cert-skills">Computer Networks · Routing &amp; Switching · TCP/IP · Network Security · Cybersecurity · Threat Mitigation</div>
-                    <a class="cert-link" href="https://coursera.org/share/6e6f6aecfe75881e3feb735d5a2a70bb" target="_blank" rel="noopener">View Certificate ↗</a>
-                </div>
-            </div>
-
-            <div class="cert-item fade-up" style="transition-delay:0.15s">
-                <div class="cert-icon">⚙️</div>
-                <div class="cert-body">
-                    <div class="cert-name">Coding for Everyone: C and C++</div>
-                    <div class="cert-issuer">UC Santa Cruz · Coursera</div>
-                    <div class="cert-skills">C Programming · C++ · Algorithms · Data Structures · Problem Solving · Software Development</div>
-                    <a class="cert-link" href="https://coursera.org/share/f3377e160a797ec4aff38acd35827f8d" target="_blank" rel="noopener">View Certificate ↗</a>
-                </div>
-            </div>
-
-            <div class="cert-item fade-up" style="transition-delay:0.2s">
-                <div class="cert-icon">📊</div>
-                <div class="cert-body">
-                    <div class="cert-name">Career Essentials in Data Analysis</div>
-                    <div class="cert-issuer">Microsoft &amp; LinkedIn Learning</div>
-                    <div class="cert-skills">Data Analysis · SQL · Data Visualization · Business Intelligence · Excel · Dashboarding · Data-Driven Decisions</div>
-                    <a class="cert-link" href="https://www.linkedin.com/learning/certificates/3d5b75d6da9ade22604c3942b71c374f68476a445158760d6fe05f23352793dd" target="_blank" rel="noopener">View Certificate ↗</a>
-                </div>
-            </div>
-
-            <div class="cert-item fade-up" style="transition-delay:0.25s">
                 <div class="cert-icon">🤖</div>
                 <div class="cert-body">
                     <div class="cert-name">Agentic AI with LangChain and LangGraph</div>
                     <div class="cert-issuer">Coursera</div>
-                    <div class="cert-skills">Agentic AI · LangChain · LangGraph · Multi-Agent Systems · LLMs · RAG · AI Automation · Tool Use</div>
+                    <div class="cert-skills">Agentic AI · LangChain · LangGraph · Multi-Agent Systems · Tool Use</div>
                     <a class="cert-link" href="https://coursera.org/share/ef9cf376eb77d537c49e644e50a13cf2" target="_blank" rel="noopener">View Certificate ↗</a>
+                </div>
+            </div>
+
+            <div class="cert-item fade-up" style="transition-delay:0.15s">
+                <div class="cert-icon">🐳</div>
+                <div class="cert-body">
+                    <div class="cert-name">Containers with Docker, Kubernetes &amp; OpenShift</div>
+                    <div class="cert-issuer">IBM · Coursera</div>
+                    <div class="cert-skills">Docker · Kubernetes · OpenShift · Containerization · Cloud-Native · Microservices</div>
+                    <a class="cert-link" href="https://coursera.org/share/cf02d33cfa60099108df962cd09bca00" target="_blank" rel="noopener">View Certificate ↗</a>
+                </div>
+            </div>
+
+            <div class="cert-item fade-up" style="transition-delay:0.2s">
+                <div class="cert-icon">🌐</div>
+                <div class="cert-body">
+                    <div class="cert-name">Computer Networks and Network Security</div>
+                    <div class="cert-issuer">IBM · Coursera</div>
+                    <div class="cert-skills">Computer Networks · TCP/IP · Network Security · Cybersecurity</div>
+                    <a class="cert-link" href="https://coursera.org/share/6e6f6aecfe75881e3feb735d5a2a70bb" target="_blank" rel="noopener">View Certificate ↗</a>
+                </div>
+            </div>
+
+            <div class="cert-item fade-up" style="transition-delay:0.25s">
+                <div class="cert-icon">⚙️</div>
+                <div class="cert-body">
+                    <div class="cert-name">Coding for Everyone: C and C++</div>
+                    <div class="cert-issuer">UC Santa Cruz · Coursera</div>
+                    <div class="cert-skills">C Programming · C++ · Algorithms · Data Structures</div>
+                    <a class="cert-link" href="https://coursera.org/share/f3377e160a797ec4aff38acd35827f8d" target="_blank" rel="noopener">View Certificate ↗</a>
+                </div>
+            </div>
+
+            <div class="cert-item fade-up" style="transition-delay:0.3s">
+                <div class="cert-icon">📊</div>
+                <div class="cert-body">
+                    <div class="cert-name">Career Essentials in Data Analysis</div>
+                    <div class="cert-issuer">Microsoft &amp; LinkedIn Learning</div>
+                    <div class="cert-skills">Data Analysis · SQL · Data Visualization · Business Intelligence · Excel</div>
+                    <a class="cert-link" href="https://www.linkedin.com/learning/certificates/3d5b75d6da9ade22604c3942b71c374f68476a445158760d6fe05f23352793dd" target="_blank" rel="noopener">View Certificate ↗</a>
                 </div>
             </div>
 
@@ -1247,36 +1505,28 @@
         <div class="section-label">09 — Achievements</div>
         <div class="workshops-list">
             <div class="workshop-item fade-up">
-                <p><strong>DPIIT Recognized Startup Founder</strong><br>
-                ZapServe Interconnecting Pvt Ltd recognized under the Startup India initiative by DPIIT, Government of India.</p>
+                <p><strong>Ideation 2nd Prize — GeoSI</strong><br>
+                Ventura Business Idea Program by thingQbator, Kerala.</p>
             </div>
             <div class="workshop-item fade-up" style="transition-delay:0.05s">
-                <p><strong>Co-Founder &amp; Director — ZapServe Interconnecting Pvt Ltd</strong><br>
-                Incorporated technology company building AI-powered hyperlocal services. Leading product strategy, AI engineering, and operations.</p>
+                <p><strong>Co-Founder — ZapServe Interconnecting Pvt Ltd</strong><br>
+                Launched the ZapServe mobile app on the App Store and Google Play.</p>
             </div>
             <div class="workshop-item fade-up" style="transition-delay:0.08s">
-                <p><strong>Built GeoSI — AI Powered Geospatial Operating System</strong><br>
-                Developed a conversational AI system integrating LLMs, RAG, GeoAI, and multi-agent workflows for geospatial intelligence.</p>
+                <p><strong>4 Open-Source Tools &amp; Models Published</strong><br>
+                VS Code extensions with 5K+ downloads, a QGIS plugin and models on Hugging Face.</p>
             </div>
             <div class="workshop-item fade-up" style="transition-delay:0.11s">
-                <p><strong>Developed HGNN Fraud Detection System (96.6% Accuracy)</strong><br>
-                Designed and trained a Heterogeneous Graph Neural Network achieving 96.6% accuracy and 0.79 ROC-AUC on credit card fraud detection.</p>
+                <p><strong>IIT Bombay GeoAI Hackathon</strong><br>
+                Built TerraPulse AI, a fine-tuned Qwen3-1.7B raising decision accuracy from 89.3% to 97.6%.</p>
             </div>
             <div class="workshop-item fade-up" style="transition-delay:0.14s">
-                <p><strong>Built Agentic RAG Systems and Multi-Agent Workflows</strong><br>
-                Developed production-ready Agentic AI systems using LangGraph, CrewAI, and LangChain for intelligent automation pipelines.</p>
+                <p><strong>HydraNet Maps in Production</strong><br>
+                99.99%+ mineral class agreement on unseen NASA EMIT scenes, deployed on AWS.</p>
             </div>
             <div class="workshop-item fade-up" style="transition-delay:0.17s">
-                <p><strong>Expertise in LLMs, GeoAI &amp; Intelligent GIS Automation</strong><br>
-                Deep practical expertise spanning Large Language Models, Geospatial AI, and autonomous GIS workflow automation for earth observation and decision support.</p>
-            </div>
-            <div class="workshop-item fade-up" style="transition-delay:0.2s">
-                <p><strong>MVP Platform Deployed</strong><br>
-                Successfully built and deployed the ZapServe minimum viable product — a full-stack AI-powered hyperlocal service marketplace.</p>
-            </div>
-            <div class="workshop-item fade-up" style="transition-delay:0.23s">
-                <p><strong>Startup Pitching Programs</strong><br>
-                Participated in competitive startup pitching events, presenting ZapServe's vision to investors, accelerators, and mentors.</p>
+                <p><strong>Volunteer — MIGRAS International Conference</strong><br>
+                Supported the organisation of an international conference.</p>
             </div>
         </div>
     </section>
@@ -1290,7 +1540,7 @@
                     <div class="contact-icon">📞</div>
                     <div>
                         <div class="contact-label">Phone</div>
-                        <div class="contact-value">+91 9961317151</div>
+                        <div class="contact-value"><a href="tel:+919961317151">+91 9961317151</a></div>
                     </div>
                 </div>
                 <div class="contact-row">
@@ -1315,35 +1565,52 @@
                     </div>
                 </div>
                 <div class="contact-row">
-                    <div class="contact-icon">🎓</div>
+                    <div class="contact-icon">⌘</div>
                     <div>
-                        <div class="contact-label">Currently</div>
-                        <div class="contact-value">MSc. Data Science &amp; Geoinformatics · Digital University Kerala</div>
+                        <div class="contact-label">GitHub · Hugging Face</div>
+                        <div class="contact-value"><a href="https://github.com/aaron43210" target="_blank" rel="noopener">github.com/aaron43210</a> · <a href="https://huggingface.co/aaronr43210" target="_blank" rel="noopener">huggingface.co/aaronr43210</a></div>
                     </div>
                 </div>
             </div>
             <div class="fade-up" style="transition-delay:0.15s">
-                <p class="contact-quote">"Building intelligent systems at the intersection of Agentic AI, GeoAI, and real-world impact — where geospatial intelligence meets autonomous decision-making."</p>
+                <p class="contact-quote">"Building intelligent systems at the intersection of AI, geospatial data and real-world impact — from satellite pixels to production."</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 Aaron R · AI Engineer · GeoAI Researcher · Built with curiosity &amp; code</p>
+        <p>© <span id="year">2026</span> Aaron R · AI/ML Engineer · GeoAI · Built with curiosity &amp; code</p>
     </footer>
 
     <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu
+        const btn = document.querySelector('.menu-btn');
+        const links = document.getElementById('nav-links');
+        const setMenu = open => {
+            links.classList.toggle('open', open);
+            btn.setAttribute('aria-expanded', open);
+            btn.textContent = open ? '✕' : '☰';
+        };
+        btn.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+        links.addEventListener('click', e => { if (e.target.tagName === 'A') setMenu(false); });
+
         // Fade-up on scroll
         const els = document.querySelectorAll('.fade-up');
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    io.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        els.forEach(el => io.observe(el));
+        if (!('IntersectionObserver' in window)) {
+            els.forEach(el => el.classList.add('visible'));
+        } else {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            els.forEach(el => io.observe(el));
+        }
     </script>
 
 </body>
